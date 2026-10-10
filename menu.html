@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ejercicios de Examen</title>
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <script src="funcion.js"></script>
+<header>
+<h1>Ejercicios del Examen/h1>
+</header>
+<main>
+<!-- EJERCICIO 1 -->
+<section class="temas">
+<h2>Ejercicio 1: Hola Mundo</h2>
+<p>Selecciona un tema:</p>
+
+<input type="radio" name="tema" id="light" checked>
+<input type="radio" name="tema" id="oscuro">
+<input type="radio" name="tema" id="personalizado">
+
+<label class="boton" for="light">Light</label>
+<label class="boton" for="oscuro">Oscuro</label>
+<label class="boton" for="personalizado">Personalizado</label>
+
+<h1>¡Hola Mundo!</h1>
+</section>
+
+<!-- EJERCICIO 2: EDAD -->
+<section>
+<h2>Ejercicio 2: Calculadora de edad</h2>
+
+<label for="fecha">Fecha de nacimiento:</label>
+<input type="date" id="fecha">
+
+<button type="button">Calcular edad</button>
+<p class="resultado">Aquí aparecerá la edad.</p>
+</section>
+<SCRIPT>
+  const fecha = document.getElementById("fecha");
+  const botones = document.querySelectorAll("main section button");
+  const resultadoEdad = document.querySelector(
+    "main section:nth-of-type(2) .resultado"
+  );
+
+  botones[0].addEventListener("click", () => {
+    if (!fecha.value) {
+      resultadoEdad.textContent = "Selecciona tu fecha de nacimiento.";
+      return;
+    }
+
+    const nacimiento = new Date(fecha.value + "T00:00:00");
+    const hoy = new Date();
+
+    if (nacimiento > hoy) {
+      resultadoEdad.textContent = "La fecha no puede ser futura.";
+      return;
+    }
+
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+    const noHaCumplido =
+      hoy.getMonth() < nacimiento.getMonth() ||
+      (hoy.getMonth() === nacimiento.getMonth() &&
+       hoy.getDate() < nacimiento.getDate());
+
+    if (noHaCumplido) edad--;
+
+    resultadoEdad.textContent = "Tu edad es: " + edad + " años.";
+  });
+</SCRIPT>
+
+<!-- LISTA DE TAREAS -->
+<section>
+<h2>Lista de tareas</h2>
+
+<label for="tarea">Escribe una tarea:</label>
+<input type="text" id="tarea" placeholder="Ej. Estudiar HTML">
+
+<button type="button">Agregar tarea</button>
+
+<ul>
+<li>Estudiar HTML
+<button type="button" class="eliminar">Eliminar</button>
+</li>
+<li>Hacer tarea
+<button type="button" class="eliminar">Eliminar</button>
+</li>
+</ul>
+</section>
+
+<!-- CONVERSOR -->
+<section>
+<h2>Conversor de temperatura</h2>
+
+<label for="temperatura">Temperatura:</label>
+<input type="number" id="temperatura" placeholder="Ingresa un valor">
+
+<label for="conversion">Conversión:</label>
+<select id="conversion">
+<option value="fc">Fahrenheit a Celsius</option>
+<option value="cf">Celsius a Fahrenheit</option>
+</select>
+
+<button type="button">Convertir</button>
+<p class="resultado">Aquí aparecerá el resultado.</p>
+</section>
+
+</main>
+
+<footer>
+<p>Varilla Garcia Daniela Marlen</p>
+</footer>
+
+</body>
+</html>
